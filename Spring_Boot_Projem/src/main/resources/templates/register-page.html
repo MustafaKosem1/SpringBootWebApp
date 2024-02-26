@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Kaydol</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #f2f2f2;
+            padding-top: 10px;
+        }
+        .main-div{
+            padding: 3%;
+        }
+        .form-div{
+            padding: 3%;
+            width: 30%;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            border-radius: 15px;
+        }
+        label{
+            font-family: "Times New Roman";
+        }
+        h4{
+            text-align: center;
+            font-weight:bold;
+            font-family: SFProDisplay-Bold, Helvetica, Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="justify-content-center main-div">
+
+
+
+        <div class="input-group mb-3 justify-content-center container-sm border-1 form-div" >
+            <div>
+                <h4>Yeni Bir Hesap Oluştur</h4>
+            </div>
+            <form th:action="@{/home/processRegistrationForm}" th:object="${user}" method="POST" >
+
+                <input id="username" class="form-control" type="text" th:field="*{username}" placeholder="Kullanıcı Adı" required maxlength="45"/>
+
+                <br>
+
+                <input id="name" class="form-control" type="text" th:field="*{name}" placeholder="İsim" required maxlength="45"/>
+
+                <br>
+
+                <input id="surname" class="form-control" type="text" th:field="*{surname}" placeholder="Soyisim" required maxlength="45"/>
+
+                <br>
+
+                <input id="phone" class="form-control" type="text" th:field="*{phone}" placeholder="Telefon Numarası" required maxlength="25"/>
+
+                <br>
+
+                <input id="mail" class="form-control" type="email" th:field="*{mail}" placeholder="E-mail" required maxlength="45"/>
+
+
+                <label class="mt-2" for="age">Yaşınızı giriniz:</label>
+                <input id="age" class="form-control" type="number" th:field="*{age}" required min="18" max="125"/>
+
+                <br>
+
+                <input id="password" class="form-control" type="password" th:field="*{password}" placeholder="Şifre" required maxlength="80"/>
+
+                <br>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success" type="submit">Kaydol</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>
